@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/chatroom.css" />
+		<link rel="stylesheet" href="css/font-awesome.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/csshake.min.css" />
+	</head>
+
+	<body background="img/bg3.jpg" id="body" style="background-repeat: no-repeat;">
+		<!--
+        	作者：935459535@qq.com
+        	时间：2019-02-22
+        	描述：shake shake-constant shake-constant--hover
+        -->
+		<div class="chat_pannel " id="win">
+			<div class="chat_pannel_top"  id="chat_pannel_top">
+				<div class="cpt_left" onclick="resize()"></div>
+				<div class="cpt_mide" onclick="resize()">知了堂房间一</div>
+				<div class="cpt_right">
+					<i class="fa fa-minus" aria-hidden="true" onclick="minimusChatPanel()"></i>
+					<i class="fa fa-square" aria-hidden="true" onclick="resize()"></i>
+					<i class="fa fa-times-circle" aria-hidden="true" onclick="closeChatPanel()"></i>
+				</div>
+			</div>
+			<div class="chat_pannel_main">
+				<div class="cp_left" id="cp_left">
+					<!--左边列表区-->
+					<div class="house_item">
+						<!-- left -->
+						<div class="house_left">
+							<img src="img/userface4.jpg">
+						</div>
+						<!-- mid -->
+						<div class="house_mid">
+							<div>房号00001</div>
+							<div>
+								lastPerson:消息
+							</div>
+						</div>
+						<!-- right -->
+						<div class="house_right">
+							<div>
+								<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+					<div class="house_item" name="house_item">
+						<!-- left -->
+						<div class="house_left">
+							<img src="img/userface5.jpg">
+						</div>
+						<!-- mid -->
+						<div class="house_mid">
+							<div>房号00002</div>
+							<div>
+								lastPerson:消息
+							</div>
+						</div>
+						<!-- right -->
+						<div class="house_right">
+							<div>
+								<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+					<div class="house_item" id="house_item">
+						<!-- left -->
+						<div class="house_left">
+							<img src="img/userface6.jpg">
+						</div>
+						<!-- mid -->
+						<div class="house_mid">
+							<div>房号00003</div>
+							<div>
+								lastPerson:消息
+							</div>
+						</div>
+						<!-- right -->
+						<div class="house_right">
+							<div>
+								<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+					<div class="house_item" id="house_item">
+						<!-- left -->
+						<div class="house_left">
+							<img src="img/userface4.jpg">
+						</div>
+						<!-- mid -->
+						<div class="house_mid">
+							<div>房号00005</div>
+							<div>
+								lastPerson:消息
+							</div>
+						</div>
+						<!-- right -->
+						<div class="house_right">
+							<div>
+								<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+					<div class="house_item">
+						<!-- left -->
+						<div class="house_left">
+							<img src="img/userface4.jpg">
+						</div>
+						<!-- mid -->
+						<div class="house_mid">
+							<div>房号00006</div>
+							<div>
+								lastPerson:消息
+							</div>
+						</div>
+						<!-- right -->
+						<div class="house_right">
+							<div>
+								<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cp_mide">
+					<!--聊天交互区-->
+					<div class="cp_mide_chatinfo">
+
+					</div>
+					<div class="cp_mide_chattool">
+						<div onclick="showEmotions()" style="cursor: pointer;"><i class="fa fa-smile-o" aria-hidden="true"></i></div>
+						<div onclick="funcZD()" style="cursor: pointer;" id="bt"><i class="fa fa-bolt" aria-hidden="true"></i></div>
+						<div class="HF" style="cursor: pointer;">
+							<i class="fa fa-adjust skin" aria-hidden="true"></i>
+							<i class="fa fa-sun-o" aria-hidden="true" onclick="skinDay()"></i>
+							<i class="fa fa-moon-o" aria-hidden="true" onclick="skinNight()"></i>
+						</div>
+					</div>
+					<div class="emotions">
+						<div>
+							<div class="emotion_item" onclick="sendEmotions(this)">>_<</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">^_^</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">⊙﹏⊙</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">⊙﹏⊙</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+							<div class="emotion_item" onclick="sendEmotions(this)">→_→</div>
+						</div>
+					</div>
+					<div class="cp_mide_chatinput">
+						<textarea id="msgtext"></textarea>
+						<button onclick="sendmsg()" id="button">发送</button>
+					</div>
+				</div>
+				<div class="cp_right" id="cp_right">
+					<!--系统及用户区-->
+					<div class="cp_right_note"></div>
+					<div class="menber_info">
+					</div>
+					<div class="cp_right_member">
+						<div class="member_item" id="member_item">
+							<div class="member_face">
+								<img src="./img/tx2.jpg">
+							</div>
+							<div class="member_name">
+									测试人员
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			
+			//
+			window.onload = function(){
+				xianshi();
+			}
+			
+			//表情方法
+			function funBQ() {}
+			//震动方法
+			var a = ['top', 'left'];
+			var b = 0;
+			var u;
+			function fudu() {
+				win.style[a[b % 2]] = (b++) % 4 < 2 ? "50%" : "50.3%";//b%2取模运算的值为0或1，这样就成为数组a的索引值用于获取数组中的值。style[a[b%]这种形式和style.top这种形式的效果是一样的。]]=(b++)%4<2?"0px":"4px"，这样通过取模判断值是否小于2，来对div的top和left属性赋值。
+				if(b > 15) {
+					clearInterval(u);
+					b = 0
+				}//如果b的值大于15，那么就停止抖动，并将b的值重置为0。
+			}
+			function zd() {
+				clearInterval(u);//停止定时器函数的运行，这句代码是为了防止连续点击按钮出现抖动可能不停止问题，因为两个抖动互相影响。
+				u = setInterval(fudu, 32)
+			}
+			window.onload = function() {//当文档内容完全加载完毕再去执行函数中的代码。
+				var bt = document.getElementById("bt");
+				var win = document.getElementById("win");
+				bt.onclick = sendshake;
+			}
+			function sendshake() {
+				Chat.socket.send('这是一个震动消息');
+				zd();
+			}
+//			
+			//换肤
+			var skinTop = document.getElementById("chat_pannel_top");
+			var skinLeft = document.getElementById("cp_left");
+			var skinRight = document.getElementById("cp_right");
+			var skinBG = document.getElementById("body");
+			var skinBtn = document.getElementById("button");
+			var skinMen = document.getElementById("member_item");
+			var BG = skinBG.style.backgroundColor;
+
+			function skinDay() {
+				skinBG.style.background = "url(img/bg3.jpg)"; //rgb(51,140,151)
+				skinBG.style.backgroundRepeat = "no-repeat";
+				skinTop.style.backgroundColor = "rgba(0,0,0,.3)";
+				skinLeft.style.backgroundColor = "rgba(0,0,0,.3)";
+				skinRight.style.backgroundColor = "rgba(0,0,0,.3)";
+				skinBtn.style.backgroundColor = "#3D4950";
+				skinMen.style.backgroundColor = "rgba(0,0,0,.3)";
+
+			}
+
+			function skinNight() {
+				skinBG.style.background = "url(img/night.jpg)"
+				skinBG.style.backgroundRepeat = "no-repeat";
+				skinTop.style.backgroundColor = "rgba(0,0,0,.5)";
+				skinLeft.style.backgroundColor = "rgba(0,0,0,.5)";
+				skinRight.style.backgroundColor = "rgba(0,0,0,.5)";
+				skinBtn.style.backgroundColor = "#0A0A09";
+				skinMen.style.backgroundColor = "rgba(0,0,0,.5)";
+			}
+
+			//切换窗口大小
+
+			var isfull = true; //是否是全屏
+			function resize() {
+				var win = document.getElementsByClassName("chat_pannel")[0];
+				if(isfull) {
+					playAudio("放大窗口");
+					win.style.position = "absolute";
+					win.style.width = "100%";
+					win.style.height = "100%";
+					win.style.top = "0";
+					win.style.left = "0";
+					win.style.marginLeft = "0";
+					win.style.marginTop = "0";
+					isfull = false;
+				} else {
+					playAudio("居中窗口");
+					win.style.position = "relative";
+					win.style.width = "800px";
+					win.style.height = "600px";
+					win.style.top = "50%";
+					win.style.left = "50%";
+					win.style.marginLeft = "-400px";
+					win.style.marginTop = "-300px";
+					isfull = true;
+				}
+			}
+			//用js封装动态的音频组件
+			function createAudio() {
+				var player = document.createElement("audio");
+				//<audio></audio>
+				return player;
+			}
+			//用js封装一个播放声音的方法
+			function playAudio(text) {
+				//				var player = document.createElement("audio");
+				//				audio.autoplay="autoplay";
+				var p = createAudio();
+				p.src = "https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text=" + text;
+				p.play();
+			}
+			
+			function plays(obj) {
+				var a = obj.parentNode.children[1].textContent;
+				//console.log(obj)
+				playAudio(a)
+			}
+			
+			//获取URL参数的方法
+			function getQueryString(keyname) {
+				var reg = new RegExp("(^|&)" + keyname + "=([^&]*)(&|$)", "i"); //正则表达式,参一是规则，参二是范围
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) {
+					return unescape(r[2]);
+				} else {
+					return null;
+				}
+			}
+
+			function createAudio() {
+				var player = document.createElement("audio");
+				player.autoplay = "autoplay";
+				return player;
+			}
+
+			function playAudio(text) {
+				var p = createAudio();
+				p.src = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=7&text=" + text;
+				p.play();
+			}
+
+			//做一次数据有效性校验
+			if(getQueryString("username") == "" || getQueryString("username") == null) {
+				playAudio("非法访问");
+												setTimeout(500,function(){
+													location.href="index.html";
+												})
+			} else {
+				playAudio("欢迎" + getQueryString("username") + "的访问");
+			}
+
+			//			alert(getQueryString("username"));
+
+			//定义用户的参数消息
+			var username = decodeURI(decodeURI(getQueryString("username")));
+			var chatroom = decodeURI(decodeURI(getQueryString("chatroom")));
+			console.log(username);
+			console.log(chatroom);
+			var param = "nickname&A&" + username;
+
+			function xianshi(){
+				document.getElementsByClassName("cpt_mide")[0].innerHTML="聊天房间"+chatroom;
+			}
+
+			//封装一个Chat对象
+			var Chat = {};
+
+			Chat.socket = null;
+			Chat.connect = (function(host) {
+				if('WebSocket' in window) {
+					console.log("支持WS");
+					Chat.socket = new WebSocket(host);
+				} else {
+					console.log("不支持WS");
+					return;
+				}
+
+				//客户端
+				Chat.socket.onopen = function() {
+					//当与服务器连接成功以后，这里会优先被调用
+					//这里可以处理连接成功以后的业务逻辑
+					//比如播放连接成功的语言提示
+				}
+
+				Chat.socket.onclose = function() {
+					//当服务器与客户端主动断开连接，则调用该方法
+					//这里可以处理断开后的业务逻辑
+					Chat.socket.close();
+					console.log(Chat.socket)
+				}
+
+				Chat.socket.onmessage = function(message) {
+					//服务器向客户端发送消息时调用该方法
+					//这里是通讯的核心方法，所有的消息都将返回到这里
+					//这里接受的消息，应该做消息筛选和消息数据处理
+					//比如自己发的消息，对方发的消息，系统消息
+					console.log(message);
+					var msg = message.data.split("&@&");
+					var msgpanel = document.getElementsByClassName("cp_mide_chatinfo")[0];
+					var hismsg = msgpanel.innerHTML;
+					if(msg.length > 1) {
+						if(msg[0] == username) {
+							hismsg +=
+								'<div class="info_mine">'+
+									'<div>'+
+										'<div>'+msg[0]+'</div>'+
+										'<span>'+msg[1]+'</span>'+
+										'<button onclick="plays(this)">'+
+										'<i class="fa fa-volume-up" aria-hidden="true"></i>'+
+										'</button>'+
+									'</div>'+
+									'<img src="img/tx1.jpg" />'+
+								'</div>';
+						} else {
+							if(msg[1] == "这是一个震动消息"){
+								zd();
+							}
+							hismsg +=
+								'<div class="info_other">'+
+									'<img src="img/tx1.jpg" />'+
+									'<div>'+
+										'<div>'+msg[0]+'</div>'+
+										'<span>'+msg[1]+'</span>'+
+										'<button onclick="plays(this)">'+
+										'<i class="fa fa-volume-up" aria-hidden="true"></i>'+
+										'</button>'+
+									'</div>'+
+								'</div>';
+						}
+						console.log(hismsg);
+						msgpanel.innerHTML = hismsg;
+						msgpanel.scrollTop = msgpanel.scrollHeight;
+					} else {
+						//系统消息
+						if(message.data.indexOf("当前在线用户")>=0){
+							var userlist = message.data.replace("* 当前在线用户,","");
+							var userlistpanel = document.getElementsByClassName("cp_right_member")[0];
+							
+							var ulist="";
+							
+							var ulistStr="";//
+							if(userlist.indexOf(",")>=0){
+								ulist=userlist.split(",");
+								console.log(ulist);
+								for(var i=1;i<ulist.length;i++){
+//									ulistStr += ulist[i].split("&!&")[1]+"<br/>";
+									ulistStr += 
+									'<div class="member_item" id="member_item">'+
+										'<div class="member_face">'+
+											'<img src="./img/userface6.jpg">' + 
+										'</div>' + 
+										'<div class="member_name">' + 
+											ulist[i].split("&!&")[1] + 
+										'</div>' + 
+									'</div>';
+								}
+							}else{
+								ulistStr += 
+								'<div class="member_item" id="member_item">'+
+									'<div class="member_face">'+
+										'<img src="./img/userface2.jpg">' + 
+									'</div>' + 
+									'<div class="member_name">' + 
+										userlist.split("&!&")[1] + 
+									'</div>' + 
+								'</div>';
+							}
+							console.log("ulist:" + ulistStr)
+							userlistpanel.innerHTML=ulistStr;
+						}
+					}
+				}
+				Chat.socket.onerror = function() {
+					//当服务器或客户端运行过程中出现的异常现象，则调用该方法
+				}
+			});
+
+//			Chat.connect("ws://192.168.1.160:8080/ZChatServer/webchat/" + param);
+			Chat.connect("ws://localhost:8080/Zchatserve/webchat/" + param);
+
+			window.onbeforeunload = function() {
+				Chat.socket.onclose();
+			}
+
+			function sendmsg() {
+				var textinfo = document.getElementById("msgtext").value;
+				if(textinfo == "") {
+					return;
+				}
+				Chat.socket.send(textinfo);
+				document.getElementById("msgtext").value = "";
+			}
+			//右上角功能区
+			function closeChatPanel(){
+				var chat_pannel = document.getElementsByClassName("chat_pannel")[0];
+				chat_pannel.style.display = "none";
+			}
+			var flag = true;
+			function minimusChatPanel(){
+				var house_name = document.getElementsByClassName("cpt_mide")[0].innerText;
+				console.log(house_name);
+				if (flag == true){
+					closeChatPanel();
+					var div = document.createElement("div");
+					var divattr = document.createAttribute("class");
+					divattr.value = "minus_house";
+					div.setAttributeNode(divattr);
+					var text =document.createTextNode(house_name);
+					div.appendChild(text);
+					var style = document.createAttribute("style");
+					div.setAttributeNode(style);
+					div.style.width = "100px";
+					div.style.color = "#fff"
+					div.style.height = "30px"
+					div.style.backgroundColor = "rgba(0,0,0,.3)";
+					div.style.cursor = "pointer";
+					div.style.marginLeft = "0";
+					div.style.marginBottom = "0";
+					document.body.appendChild(div);
+					minimusOnclick();
+					flag = false;
+				}else{
+					flag = true;
+				}
+			}
+			function minimusOnclick(){
+				var minus_house = document.getElementsByClassName("minus_house")[0];
+				//console.log(minus_house);
+				minus_house.onclick = function(){
+					var chat_pannel = document.getElementsByClassName("chat_pannel")[0];
+					chat_pannel.style.display = "block";
+					minus_house.parentNode.removeChild(minus_house);
+				}
+
+			}
+			
+			function sendEmotions(_this){
+				console.log(_this.innerText);
+				Chat.socket.send(_this.innerText);
+				showEmotions();
+			}
+			function showEmotions(){
+				var emotions = document.getElementsByClassName("emotions")[0];
+				if(emotions.style.display == "block"){
+					emotions.style.display = "none";
+				}else{
+					emotions.style.display = "block";
+				}
+			}
+		</script>
+	</body>
+
+</html>

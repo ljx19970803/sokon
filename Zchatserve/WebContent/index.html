@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>mychat</title>
+		<link rel="stylesheet" href="css/chat.css" />
+	</head>
+	<body>
+		<!--
+			采用国字型界面布局
+			实现自适应局部结构
+			实现剧中布局结构
+			
+			div的特性:
+			1、独占一行：width：100%
+			2、没有行高：height：0
+			3、看不及边框：border：none
+			...
+		-->
+		<div class="login_pannel">
+			<div class="login_top" id="container">
+				<div id="anitOut"></div>
+			</div>
+			<div class="login_main">
+				<input type="text" value="账号/邮箱/电话" name="username" onfocus="checkname(this)" onblur="checkname(this)" oninput="changeicon(this)"/>
+				<input type="password" name="password"/>
+				<button onclick="subm()">登陆</button>
+			</div>
+			<div class="login_usericon">
+				<img name="usericon" src="img/tx1.jpg" />
+			</div>
+		</div>
+		<!--<audio src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text=你好" autoplay="autoplay"></audio>-->
+		<!--以下三个引用必须按如下顺序-->
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<script type="text/javascript" src="js/cav.js" ></script>
+		<script type="text/javascript" src="js/bg.js" ></script>
+		<script>
+			//用js封装动态的音频组件
+			function createAudio(){
+				var player = document.createElement("audio");//<audio></audio>
+				return  player;
+			}
+			//用js封装一个播放声音的方法
+			function playAudio(text){
+				var p =createAudio();
+				p.src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text="+text;
+				p.play();
+			}
+			//判断账号
+			function checkname(_this){
+				if(_this.value=="账号/邮箱/电话"){
+					_this.value="";
+					playAudio("请输入账号，邮箱或者电话");
+				}else if(_this.value==""){
+					_this.value="账号/邮箱/电话";
+				}
+			}
+			//处理头像的方法
+			function changeicon(_this){
+				if(_this.value=="953109512"){
+					//通过DOM方法取对象，设置对应头像图片
+					document.getElementsByName("usericon")[0].src="img/tx2.jpg";
+				}else{
+					//初始化为默认头像
+					document.getElementsByName("usericon")[0].src="img/tx1.jpg";
+				}
+			}
+			//提交数据方法
+			function subm(){
+				//取输入框数据
+				var username = "";
+				var password = "";
+				username = document.getElementsByName("username")[0].value;
+				password = document.getElementsByName("password")[0].value;
+//				作一次数据有效性校验
+				if(username=="账号/邮箱/电话" || username==""){
+				    alert("请输入正确的账号/邮箱/电话");
+				    return;
+				}
+			    if(password==""){
+			    	alert("请输入正确的密码");
+			    	return;
+			    }
+			    //校验完毕，数据传递
+			    if( password=="123"){
+			    location.href="fanjian.html?username="+encodeURI(encodeURI(username));//只对非西欧字符进行转码处理
+//			    alert(username+"|"+password);
+                }else{
+                	//提示并清空输入的内容
+                	document.getElementsByName("username")[0].value="";
+                	document.getElementsByName("password")[0].value="";
+                	alert("对不起，账号或密码错误");
+                }
+			   }
+			
+		</script>
+	</body>
+</html>

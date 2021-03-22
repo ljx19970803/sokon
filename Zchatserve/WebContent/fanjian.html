@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/fangjian.css" />
+		<title></title>
+	</head>
+	<body>
+		<div class="chat_pannel">
+			<div class="chat_pannel_top">
+				<div class="cpt_left">
+					<img src="img/userface2.jpg" />
+					<div name="xinming">余 思 翰</div>
+					<input type="text" value="请输入你的个性签名" onfocus="checkname(this)" onblur="checkname(this)"/>
+				</div>
+				<div class="cpt_right">
+					<input type="text" value="搜索" onfocus="checkserch(this)" onblur="checkserch(this)"/>
+				</div>
+			</div>
+			<div class="">
+				<div class="chat_pannel_main" onclick="xianxi(this)">
+				<div class="cpm_left">
+					<img src="img/userface2.jpg"/>
+					<div>知了堂聊天群一</div>
+					<input type="hidden" value="一" />
+				</div>
+				<div class="cpm_right"></div>
+			</div>
+			<div class="chat_pannel_main" onclick="xianxi(this)">
+				<div class="cpm_left">
+					<img src="img/userface6.jpg"/>
+					<div>知了堂聊天群二</div>
+					<input type="hidden" value="二" />
+				</div>
+				<div class="cpm_right"></div>
+			</div>
+			<div class="chat_pannel_main" onclick="xianxi(this)">
+				<div class="cpm_left">
+					<img src="img/userface4.jpg"/>
+					<div>知了堂聊天群三</div>
+					<input type="hidden" value="三" />
+				</div>
+				<div class="cpm_right"></div>
+			</div>
+			<div class="chat_pannel_main" onclick="xianxi(this)">
+				<div class="cpm_left">
+					<img src="img/userface6.jpg"/>
+					<div>知了堂聊天群四</div>
+					<input type="hidden" value="四" />
+				</div>
+				<div class="cpm_right"></div>
+			</div>
+			<div class="chat_pannel_main" onclick="xianxi(this)">
+				<div class="cpm_left">
+					<img src="img/userface5.jpg"/>
+					<div>知了堂聊天群五</div>
+					<input type="hidden" value="五" />
+				</div>
+				<div class="cpm_right"></div>
+			</div>
+			</div>
+		</div>
+		<script>
+			
+			
+			
+			//加载时改变你的昵称
+			window.onload = function() {
+				jiazia();
+			}
+			
+			//用js封装动态的音频组件
+			function createAudio(){
+				var player = document.createElement("audio");//<audio></audio>
+				return  player;
+			}
+			//用js封装一个播放声音的方法
+			function playAudio(text){
+				var p =createAudio();
+				p.src="https://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text="+text;
+				p.play();
+			}
+			//判断
+			function checkname(_this){
+				if(_this.value=="请输入你的个性签名"){
+					_this.value="";
+					playAudio("请输入你的个性签名");
+				}else if(_this.value==""){
+					_this.value="请输入你的个性签名";
+				}
+			}
+			function checkserch(_this){
+				if(_this.value=="搜索"){
+					_this.value="";
+					playAudio("请输入搜索内容");
+				}else if(_this.value==""){
+					_this.value="搜索";
+				}
+			}
+			
+			
+			//获取URL参数的方法
+			function getQueryString(keyname) {
+				var reg = new RegExp("(^|&)" + keyname + "=([^&]*)(&|$)", "i"); //正则表达式,参一是规则，参二是范围
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) {
+					return unescape(r[2]);
+				} else {
+					return null;
+				}
+			}
+
+			var username = decodeURI(decodeURI(getQueryString("username")));
+			console.log(username);
+			playAudio("欢迎"+username+"使用该聊天系统");
+
+			function jiazia() {
+				//				var name = document.getElementsByName("xinming");
+				document.getElementsByName("xinming")[0].innerHTML = username;
+			}
+			
+			function xianxi(obj){
+//				var chatroom = document.getElementsByClassName("chat_room")[5].value;
+				console.log(obj.childNodes[1].childNodes[5].value);
+				var chatroom=obj.childNodes[1].childNodes[5].value;
+				location.href="chatroom.html?username="+encodeURI(encodeURI(username))+"&chatroom="+encodeURI(encodeURI(chatroom));
+			}
+		</script>
+	</body>
+	
+</html>

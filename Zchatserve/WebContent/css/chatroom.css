@@ -1,0 +1,373 @@
+/*滚动条样式*/
+/*滚动条*/
+::-webkit-scrollbar-track-piece:{
+	background-color: red;
+}
+/*滑块*/
+::-webkit-scrollbar-thumb{
+	background-color: #DCDCDC;
+	background-clip: padding-box;
+	min-height: 30px;
+}
+::-webkit-scrollbar{
+	width: 6px;
+}
+::-webkit-scrollbar-thumb:hover{
+	background-color: #808080;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.fa:hover{
+	cursor: pointer;
+	
+}
+
+.chat_pannel{
+	width: 100%;
+	height: 100%;
+	/*background-color: yellow;*/
+	border: 1px solid gainsboro;
+	box-shadow: 0 0 20px 0;
+	/*position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -400px;*/
+}
+/*头部样式开始*/
+.chat_pannel_top{
+	height: 6%;
+	background-color: rgba(0,0,0,.3);
+	border-bottom: 1px solid gainsboro;
+	/*background-color: #338c97;*/
+	display: flex;
+	
+}
+.cpt_left{
+	width: 20%;
+	/*background-color:red ;*/
+}
+.cpt_mide{
+	width: 60%;
+	/*background-color: blue;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;w
+}
+.cpt_right{
+	width: 20%;
+	display: flex;
+	justify-content: flex-end;
+	/*background-color: green;*/
+}
+.cpt_right i{
+	margin-right: 10px;
+	color: #fff;
+	transform: none;
+}
+/*头部样式结束*/
+
+/*主面板样式开始*/
+.chat_pannel_main{
+	height: 94%;
+
+	display: flex;
+}
+
+/*左边列表区开始*/
+.cp_left{
+	background-color: rgba(0,0,0,.3);
+	width: 20%;
+	height: 100%;
+	font-size: 10px;
+	border: 1px solid gainsboro;
+
+}
+.cp_left div>img{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+.cp_left_list{
+	width: 100%;
+	height: 10%;
+	/*background-color: deepskyblue;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*background-color: #FAE362;*/
+	border-bottom: 1px solid grey;
+	border-top: 1px solid grey;
+}
+.cp_left_list img{
+	width: 30%;
+	height: 100%;
+	border-radius: 50%;
+}
+.cp_left_list .left_list_info{
+	width: 60%;
+	/*background-color: green;*/
+	text-align: center;
+}
+.cp_left_list .left_list_close{
+	width: 10%;
+}
+
+/*左边列表区结束*/
+
+/*聊天交互区样式开始*/
+.cp_mide{
+	width: 65%;
+	height: 100%;
+    background-color: rgba(255,255,255,.5);
+	/*background-color: lightsalmon;*/
+	border-right: 1px solid gainsboro;
+}
+
+/*聊天信息区域样式开始*/
+.cp_mide_chatinfo{
+	height: 75%;
+	border-bottom: 1px solid gainsboro;
+	/*这里设置下边框后多了一像素，出现了滚动条，因此在上面初始化时设置overflow：hidden*/
+	overflow-y: auto;
+}
+.cp_mide_chatinfo .info_other{
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+	word-break: break-word;
+	
+}
+.cp_mide_chatinfo .info_other button{
+	background: none;
+    border: none;
+}
+.cp_mide_chatinfo .info_other>img{
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	border: 1px solid grey;
+	margin: 5px;
+}
+.cp_mide_chatinfo .info_other>div{
+	max-width: 50%;
+	/*background-color: rgba(0,0,0,.5);*/
+	color: #fff;
+}
+.cp_mide_chatinfo .info_other>div>div{
+	/*background-color: #fff;*/
+}
+.cp_mide_chatinfo .info_mine{
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+}
+.cp_mide_chatinfo .info_mine>img{
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	border: 1px solid grey;
+	margin: 5px;
+}
+.cp_mide_chatinfo .info_mine>div{
+	/*display: flex;
+	flex-direction: column;
+	align-items: flex-end;*/
+
+	max-width: 50%;
+	/*background-color: rgba(0,0,0,.5);*/
+	color: #fff;
+}
+.cp_mide_chatinfo .info_mine>div span{
+	margin-right: 2px;	
+	/*border: 1px solid grey;*/
+	text-shadow: 1px 1px 1px #00A6FF;
+	font-size: 15px;
+}
+.cp_mide_chatinfo .info_other>div span{
+	margin-right: 2px;	
+	/*border: 1px solid grey;*/
+	text-shadow: 1px 1px 1px orange;
+	font-size: 15px;
+}
+.cp_mide_chatinfo .info_mine>div>div{
+	background-color: transparent;
+	text-align: right;/*将昵称右对齐*/
+}
+/*聊天信息区域样式结束*/
+
+/*聊天工具区开始*/
+.cp_mide_chattool{
+	height: 5%;
+	
+	/*background-color: red;*/
+	display: flex;
+}
+.cp_mide_chattool>div>i{
+	color: #fff;
+	margin-right: 4px;
+	
+}
+.cp_mide_chattool i:hover{
+	transform: scale(2);
+	text-shadow: 1px 1px 1px #00A6FF;
+}
+.cp_mide_chattool div{
+	height: 24px;
+	width: 24px;
+	/*background-color: gainsboro;*/
+	margin: 5px;
+	line-height: 24px;
+	text-align: center;
+}
+.cp_mide_chattool .HF{
+	width: 72px;
+	/*background-color: black;*/
+}
+/*换肤开始*/
+
+.HF:hover .skin{
+	display: none;
+}
+.HF:hover .fa-sun-o,.HF:hover .fa-moon-o{
+	visibility: visible;
+}
+.fa-sun-o,.fa-moon-o{
+	visibility: hidden;
+}
+
+/*换肤结束*/
+/*聊天工具区结束*/
+
+/*聊天输入区开始*/
+.cp_mide_chatinput{
+	height: 20%;
+	overflow: hidden;
+}
+.cp_mide_chatinput textarea{
+	width: 100%;
+	height: 70%;
+	border: hidden;
+	resize: none;
+
+}
+.cp_mide_chatinput button{
+	width: 100px;
+	height: 29.99%;
+	border: none;
+	background-color: #3D4950;;
+	color: #fff;
+	float: right;
+}
+/*聊天输入区结束*/
+/*聊天交互区样式结束*/
+
+/*系统及用户区开始*/
+.cp_right{
+	width: 15%;
+	height: 100%;
+	background-color:rgba(0,0,0,.3);
+}
+.cp_right_note{
+	height: 45%;
+}
+.cp_right_member{
+	height: 55%;
+}
+.cp_right_member .menber_tool{
+	height: 10%;
+	background-color:rgba(0,0,0,.3);
+}
+.cp_right_member .menber_info{
+	height: 90%;
+}
+/*系统及用户区域结束*/
+/*主面板样式结束*/
+.house_item{
+	height: 31px;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(0,0,0,.3);
+	border-bottom: 1px solid gainsboro;
+	color: #fff;
+}
+.house_left{
+	width:20%;
+	
+}
+.house_mid{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+.house_right{
+	width: 20%;
+}
+.member_item{
+	display: flex;
+	justify-content: space-around;
+	line-height:30px; 
+	background-color: rgba(0,0,0,.3);
+	border: 1px solid #9fa8da;
+	font-size: 10px;
+	height: 31px;
+	color: #FFFFFF;
+}
+.member_face{
+	width:30%;
+}
+.member_name{
+	width:60%;
+}
+.member_face>img{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.emotions{
+	display: none;
+	width: 500px;
+	height: 200px;
+	overflow-y: auto;
+	position: absolute;
+	justify-content: flex-start;
+	background-color: white;
+	bottom: 24%;
+	flex-wrap: wrap;
+}
+.emotions>div{
+	display: flex;
+	justify-content: flex-start;
+	background-color: white;
+	flex-wrap: wrap;
+}
+.emotion_item{
+	width: 50px;
+	height: 30px;
+	margin-left: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+.emotion_item:hover{
+	background-color: #8893a8;
+	border-radius: 30%;
+}
+
+.info_mine button{
+	background:none;
+	border: none;
+    /*color:white;
+    opacity:0.2;*/
+}
